@@ -1,0 +1,1045 @@
+    category: 'Clothing',
+    price: 900,
+    stock: 100,
+    rating: 4
+  },
+  {
+    _id: ObjectId('6acc588e9c7be04c4ac48cc7'),
+    productId: 'P105',
+    name: 'Shoes',
+    category: 'Footwear',
+    price: 3500,
+    stock: 25,
+    rating: 4.4
+  }
+]
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+|   {
+|     productId: "P101",
+|     name: "Laptop",
+|     category: "Electronics",
+|     price: 55000,
+|     stock: 10,
+|     rating: 4.5,
+|     tags: ["Computer", "Office"]
+|   },
+|   {
+|     productId: "P102",
+|     name: "Mobile",
+|     category: "Electronics",
+|     price: 25000,
+|     stock: 20,
+|     rating: 4.2,
+|     tags: ["Phone", "Android"]
+|   },
+|   {
+|     productId: "P103",
+|     name: "Headphones",
+|     category: "Accessories",
+|     price: 2000,
+|     stock: 30,
+|     rating: 4.0,
+|     tags: ["Audio", "Wireless"]
+|   },
+|   {
+|     productId: "P104",
+|     name: "TShirt",
+|     category: "Fashion",
+|     price: 800,
+|     stock: 50,
+|     rating: 3.8,
+|     tags: ["Clothing", "Cotton"]
+|   },
+|   {
+|     productId: "P105",
+|     name: "Shoes",
+|     category: "Fashion",
+|     price: 3000,
+|     stock: 15,
+|     rating: 4.3,
+|     tags: ["Footwear", "Sports"]
+|   }
+| ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6acc58d89c7be04c4ac48cc8'),
+    '1': ObjectId('6acc58d89c7be04c4ac48cc9'),
+    '2': ObjectId('6acc58d89c7be04c4ac48cca'),
+    '3': ObjectId('6acc58d89c7be04c4ac48ccb'),
+    '4': ObjectId('6acc58d89c7be04c4ac48ccc')
+  }
+}
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.find().pretty()
+[
+  {
+    _id: ObjectId('6acc588e9c7be04c4ac48cc3'),
+    productId: 'P101',
+    name: 'Laptop',
+    category: 'Electronics',
+    price: 65000,
+    stock: 20,
+    rating: 4.5
+  },
+  {
+    _id: ObjectId('6acc588e9c7be04c4ac48cc4'),
+    productId: 'P102',
+    name: 'Mobile',
+    category: 'Electronics',
+    price: 30000,
+    stock: 35,
+    rating: 4.3
+  },
+  {
+    _id: ObjectId('6acc588e9c7be04c4ac48cc5'),
+    productId: 'P103',
+    name: 'Headphones',
+    category: 'Electronics',
+    price: 2500,
+    stock: 60,
+    rating: 4.7
+  },
+  {
+    _id: ObjectId('6acc588e9c7be04c4ac48cc6'),
+    productId: 'P104',
+    name: 'TShirt',
+    category: 'Clothing',
+    price: 900,
+    stock: 100,
+    rating: 4
+  },
+  {
+    _id: ObjectId('6acc588e9c7be04c4ac48cc7'),
+    productId: 'P105',
+    name: 'Shoes',
+    category: 'Footwear',
+    price: 3500,
+    stock: 25,
+    rating: 4.4
+  },
+  {
+    _id: ObjectId('6acc58d89c7be04c4ac48cc8'),
+    productId: 'P101',
+    name: 'Laptop',
+    category: 'Electronics',
+    price: 55000,
+    stock: 10,
+    rating: 4.5,
+    tags: [ 'Computer', 'Office' ]
+  },
+  {
+    _id: ObjectId('6acc58d89c7be04c4ac48cc9'),
+    productId: 'P102',
+    name: 'Mobile',
+    category: 'Electronics',
+    price: 25000,
+    stock: 20,
+    rating: 4.2,
+    tags: [ 'Phone', 'Android' ]
+  },
+  {
+    _id: ObjectId('6acc58d89c7be04c4ac48cca'),
+    productId: 'P103',
+    name: 'Headphones',
+    category: 'Accessories',
+    price: 2000,
+    stock: 30,
+    rating: 4,
+    tags: [ 'Audio', 'Wireless' ]
+  },
+  {
+    _id: ObjectId('6acc58d89c7be04c4ac48ccb'),
+    productId: 'P104',
+    name: 'TShirt',
+    category: 'Fashion',
+    price: 800,
+    stock: 50,
+    rating: 3.8,
+    tags: [ 'Clothing', 'Cotton' ]
+  },
+  {
+    _id: ObjectId('6acc58d89c7be04c4ac48ccc'),
+    productId: 'P105',
+    name: 'Shoes',
+    category: 'Fashion',
+    price: 3000,
+    stock: 15,
+    rating: 4.3,
+    tags: [ 'Footwear', 'Sports' ]
+  }
+]
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertMany([
+|   {
+|     productId: "P101",
+|     name: "Laptop",
+|     category: "Electronics",
+|     price: 55000,
+|     stock: 10,
+|     rating: 4.5,
+|     tags: ["Computer", "Office"]
+|   },
+|   {
+|     productId: "P102",
+|     name: "Mobile",
+|     category: "Electronics",
+|     price: 25000,
+|     stock: 20,
+|     rating: 4.2,
+|     tags: ["Phone", "Android"]
+|   },
+|   {
+|     productId: "P103",
+|     name: "Headphones",
+|     category: "Accessories",
+|     price: 2000,
+|     stock: 30,
+|     rating: 4.0,
+| : ["Ao", "Wireless"]
+|   },
+|   {
+|     productId: "P104",
+|     name: "TShirt",
+|     category: "Fashion",
+|     price: 800,
+|     stock: 50,
+|     rating: 3.8,
+|     tags: ["Clothing", "Cotton"]
+|   },
+|   {
+|     productId: "P105",
+|     name: "Shoes",
+|     category: "Fashion",
+|     price: 3000,
+|     stock: 15,
+|     rating: 4.3,
+|     tags: ["Footwear", "Sports"]
+|   }
+| ])
+Uncaught:
+SyntaxError: Unexpected token (27:0)
+
+  25 |     stock: 30,
+  26 |     rating: 4.0,
+> 27 | : ["Ao", "Wireless"]
+     | ^
+  28 |   },
+  29 |   {
+  30 |     productId: "P104",
+
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.insertOne({
+|   productId: "P106",
+|   name: "Watch",
+|   category: "Accessories",
+|   price: 5000,
+|   stock: 15,
+|   rating: 4.1,
+|   tags: ["Fashion", "Analog"]
+| })
+{
+  acknowledged: true,
+  insertedId: ObjectId('6acc61b99c7be04c4ac48ccd')
+}
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> db.products.find({ productId: "P106" })
+[
+  {
+    _id: ObjectId('6acc61b99c7be04c4ac48ccd'),
+    productId: 'P106',
+    name: 'Watch',
+    category: 'Accessories',
+    price: 5000,
+    stock: 15,
+    rating: 4.1,
+    tags: [ 'Fashion', 'Analog' ]
+  }
+]
+Atlas atlas-mgn678-shard-0 [primary] ecommerce> use ecommerceDB
+switched to db ecommerceDB
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.customers.insertMany([
+|   {
+|     customer_id: 101,
+|     name: "Aman Sharma",
+|     age: 22,
+|     city: "Jaipur",
+|     email: "aman@gmail.com",
+|     membership: "Gold",
+|     active: true
+|   },
+|   {
+|     customer_id: 102,
+|     name: "Priya Verma",
+|     age: 25,
+|     city: "Delhi",
+|     email: "priya@gmail.com",
+|     membership: "Silver",
+|     active: true
+|   },
+|   {
+|     customer_id: 103,
+|     name: "Rahul Singh",
+|     age: 28,
+|     city: "Mumbai",
+|     email: "rahul@gmail.com",
+|     membership: "Gold",
+|     active: false
+|   },
+|   {
+|     customer_id: 104,
+|     name: "Neha Gupta",
+|     age: 21,
+|     city: "Jaipur",
+|     email: "neha@gmail.com",
+|     membership: "Bronze",
+|     active: true
+|   },
+|   {
+|     customer_id: 105,
+|     name: "Rohit Kumar",
+|     age: 30,
+|     city: "Delhi",
+|     email: "rohit@gmail.com",
+|     membership: "Silver",
+|     active: true
+|   }
+| ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6acc82269c7be04c4ac48cce'),
+    '1': ObjectId('6acc82269c7be04c4ac48ccf'),
+    '2': ObjectId('6acc82269c7be04c4ac48cd0'),
+    '3': ObjectId('6acc82269c7be04c4ac48cd1'),
+    '4': ObjectId('6acc82269c7be04c4ac48cd2')
+  }
+}
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.products.insertMany([
+|   {
+|     product_id: 201,
+|     name: "Laptop",
+|     category: "Electronics",
+|     price: 55000,
+|     stock: 10,
+|     tags: ["computer", "electronics"],
+|     rating: 4.5
+|   },
+|   {
+|     product_id: 202,
+|     name: "Smartphone",
+|     category: "Electronics",
+|     price: 25000,
+|     stock: 20,
+|     tags: ["mobile", "electronics"],
+|     rating: 4.2
+|   },
+|   {
+|     product_id: 203,
+|     name: "Headphones",
+|     category: "Accessories",
+|     price: 2000,
+|     stock: 50,
+|     tags: ["audio", "wireless"],
+|     rating: 4.0
+|   },
+|   {
+|     product_id: 204,
+|     name: "Office Chair",
+|     category: "Furniture",
+|     price: 7000,
+|     stock: 15,
+|     tags: ["office", "furniture"],
+|     rating: 4.3
+|   },
+|   {
+|     product_id: 205,
+|     name: "Keyboard",
+|     category: "Accessories",
+|     price: 1500,
+|     stock: 35,
+|     tags: ["computer", "wireless"],
+|     rating: 3.8
+|   }
+| ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6acc823a9c7be04c4ac48cd3'),
+    '1': ObjectId('6acc823a9c7be04c4ac48cd4'),
+    '2': ObjectId('6acc823a9c7be04c4ac48cd5'),
+    '3': ObjectId('6acc823a9c7be04c4ac48cd6'),
+    '4': ObjectId('6acc823a9c7be04c4ac48cd7')
+  }
+}
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.orders.insertMany([
+|   {
+|     order_id: 301,
+|     customer_id: 101,
+|     products: [
+|       {product_id: 201, name: "Laptop", quantity: 1,price: 55000},
+|       {product_id: 203, name: "Headphones", quantity: 2, pprice: 2000}
+|     ],
+|     total_amount: 59000,
+|     status: "Delivered",
+|     order_date: ISODate("2026-09-10")
+|   },
+|   {
+|     order_id: 302,
+|     customer_id: 102,
+|     products: [
+|       {product_id: 202, name: "Smartphone", quantity: 1, pprice: 25000}
+|     ],
+|     total_amount: 25000,
+|     status: "Shipped",
+|     order_date: ISODate("2026-09-15")
+|   },
+|   {
+|     order_id: 303,
+|     customer_id: 103,
+|     products: [
+|       {product_id: 204, name: "Office Chair", quantity: 2, price: 7000}
+|     ],
+|     total_amount: 14000,
+|     status: "Cancelled",
+|     order_date: ISODate("2026-09-18")
+|   },
+|   {
+|     order_id: 304,
+|     customer_id: 104,
+|     products: [
+|       {product_id: 205, name: "Keyboard", quantity: 2, priprice: 1500},
+|       {product_id: 203, name: "Headphones", quantity: 1, pprice: 2000}
+|     ],
+|     total_amount: 5000,
+|     status: "Delivered",
+|     order_date: ISODate("2026-09-20")
+|   },
+|   {
+|     order_id: 305,
+|     customer_id: 105,
+|     products: [
+|       {product_id: 201, name: "Laptop", quantity: 1,price: 55000}
+|     ],
+|     total_amount: 55000,
+|     status: "Processing",
+|     order_date: ISODate("2026-09-25")
+|   }
+| ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('6acc82549c7be04c4ac48cd8'),
+    '1': ObjectId('6acc82549c7be04c4ac48cd9'),
+    '2': ObjectId('6acc82549c7be04c4ac48cda'),
+    '3': ObjectId('6acc82549c7be04c4ac48cdb'),
+    '4': ObjectId('6acc82549c7be04c4ac48cdc')
+  }
+}
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> show collections
+| 
+| db.customers.find()
+| db.products.find()
+| db.orders.find()
+customers
+orders
+products
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.products.find()
+[
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd3'),
+    product_id: 201,
+    name: 'Laptop',
+    category: 'Electronics',
+    price: 55000,
+    stock: 10,
+    tags: [ 'computer', 'electronics' ],
+    rating: 4.5
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd4'),
+    product_id: 202,
+    name: 'Smartphone',
+    category: 'Electronics',
+    price: 25000,
+    stock: 20,
+    tags: [ 'mobile', 'electronics' ],
+    rating: 4.2
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd5'),
+    product_id: 203,
+    name: 'Headphones',
+    category: 'Accessories',
+    price: 2000,
+    stock: 50,
+    tags: [ 'audio', 'wireless' ],
+    rating: 4
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd6'),
+    product_id: 204,
+    name: 'Office Chair',
+    category: 'Furniture',
+    price: 7000,
+    stock: 15,
+    tags: [ 'office', 'furniture' ],
+    rating: 4.3
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd7'),
+    product_id: 205,
+    name: 'Keyboard',
+    category: 'Accessories',
+    price: 1500,
+    stock: 35,
+    tags: [ 'computer', 'wireless' ],
+    rating: 3.8
+  }
+]
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.products.find().pretty()
+[
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd3'),
+    product_id: 201,
+    name: 'Laptop',
+    category: 'Electronics',
+    price: 55000,
+    stock: 10,
+    tags: [ 'computer', 'electronics' ],
+    rating: 4.5
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd4'),
+    product_id: 202,
+    name: 'Smartphone',
+    category: 'Electronics',
+    price: 25000,
+    stock: 20,
+    tags: [ 'mobile', 'electronics' ],
+    rating: 4.2
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd5'),
+    product_id: 203,
+    name: 'Headphones',
+    category: 'Accessories',
+    price: 2000,
+    stock: 50,
+    tags: [ 'audio', 'wireless' ],
+    rating: 4
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd6'),
+    product_id: 204,
+    name: 'Office Chair',
+    category: 'Furniture',
+    price: 7000,
+    stock: 15,
+    tags: [ 'office', 'furniture' ],
+    rating: 4.3
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd7'),
+    product_id: 205,
+    name: 'Keyboard',
+    category: 'Accessories',
+    price: 1500,
+    stock: 35,
+    tags: [ 'computer', 'wireless' ],
+    rating: 3.8
+  }
+]
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.products.find({
+|   price: {$gt: 5000}
+| })
+[
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd3'),
+    product_id: 201,
+    name: 'Laptop',
+    category: 'Electronics',
+    price: 55000,
+    stock: 10,
+    tags: [ 'computer', 'electronics' ],
+    rating: 4.5
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd4'),
+    product_id: 202,
+    name: 'Smartphone',
+    category: 'Electronics',
+    price: 25000,
+    stock: 20,
+    tags: [ 'mobile', 'electronics' ],
+    rating: 4.2
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd6'),
+    product_id: 204,
+    name: 'Office Chair',
+    category: 'Furniture',
+    price: 7000,
+    stock: 15,
+    tags: [ 'office', 'furniture' ],
+    rating: 4.3
+  }
+]
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.customers.find({
+|   age: {$lt: 25}
+| })
+[
+  {
+    _id: ObjectId('6acc82269c7be04c4ac48cce'),
+    customer_id: 101,
+    name: 'Aman Sharma',
+    age: 22,
+    city: 'Jaipur',
+    email: 'aman@gmail.com',
+    membership: 'Gold',
+    active: true
+  },
+  {
+    _id: ObjectId('6acc82269c7be04c4ac48cd1'),
+    customer_id: 104,
+    name: 'Neha Gupta',
+    age: 21,
+    city: 'Jaipur',
+    email: 'neha@gmail.com',
+    membership: 'Bronze',
+    active: true
+  }
+]
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.products.find({
+|   $and: [
+|     {price: {$gt: 1000}},
+|     {stock: {$lt: 40}}
+|   ]
+| })
+[
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd3'),
+    product_id: 201,
+    name: 'Laptop',
+    category: 'Electronics',
+    price: 55000,
+    stock: 10,
+    tags: [ 'computer', 'electronics' ],
+    rating: 4.5
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd4'),
+    product_id: 202,
+    name: 'Smartphone',
+    category: 'Electronics',
+    price: 25000,
+    stock: 20,
+    tags: [ 'mobile', 'electronics' ],
+    rating: 4.2
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd6'),
+    product_id: 204,
+    name: 'Office Chair',
+    category: 'Furniture',
+    price: 7000,
+    stock: 15,
+    tags: [ 'office', 'furniture' ],
+    rating: 4.3
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd7'),
+    product_id: 205,
+    name: 'Keyboard',
+    category: 'Accessories',
+    price: 1500,
+    stock: 35,
+    tags: [ 'computer', 'wireless' ],
+    rating: 3.8
+  }
+]
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.customers.find({
+|   $or: [
+|     {city: "Jaipur"},
+|     {city: "Delhi"}
+|   ]
+| })
+[
+  {
+    _id: ObjectId('6acc82269c7be04c4ac48cce'),
+    customer_id: 101,
+    name: 'Aman Sharma',
+    age: 22,
+    city: 'Jaipur',
+    email: 'aman@gmail.com',
+    membership: 'Gold',
+    active: true
+  },
+  {
+    _id: ObjectId('6acc82269c7be04c4ac48ccf'),
+    customer_id: 102,
+    name: 'Priya Verma',
+    age: 25,
+    city: 'Delhi',
+    email: 'priya@gmail.com',
+    membership: 'Silver',
+    active: true
+  },
+  {
+    _id: ObjectId('6acc82269c7be04c4ac48cd1'),
+    customer_id: 104,
+    name: 'Neha Gupta',
+    age: 21,
+    city: 'Jaipur',
+    email: 'neha@gmail.com',
+    membership: 'Bronze',
+    active: true
+  },
+  {
+    _id: ObjectId('6acc82269c7be04c4ac48cd2'),
+    customer_id: 105,
+    name: 'Rohit Kumar',
+    age: 30,
+    city: 'Delhi',
+    email: 'rohit@gmail.com',
+    membership: 'Silver',
+    active: true
+  }
+]
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.customers.find({
+|   email: {$exists: true}
+| })
+[
+  {
+    _id: ObjectId('6acc82269c7be04c4ac48cce'),
+    customer_id: 101,
+    name: 'Aman Sharma',
+    age: 22,
+    city: 'Jaipur',
+    email: 'aman@gmail.com',
+    membership: 'Gold',
+    active: true
+  },
+  {
+    _id: ObjectId('6acc82269c7be04c4ac48ccf'),
+    customer_id: 102,
+    name: 'Priya Verma',
+    age: 25,
+    city: 'Delhi',
+    email: 'priya@gmail.com',
+    membership: 'Silver',
+    active: true
+  },
+  {
+    _id: ObjectId('6acc82269c7be04c4ac48cd0'),
+    customer_id: 103,
+    name: 'Rahul Singh',
+    age: 28,
+    city: 'Mumbai',
+    email: 'rahul@gmail.com',
+    membership: 'Gold',
+    active: false
+  },
+  {
+    _id: ObjectId('6acc82269c7be04c4ac48cd1'),
+    customer_id: 104,
+    name: 'Neha Gupta',
+    age: 21,
+    city: 'Jaipur',
+    email: 'neha@gmail.com',
+    membership: 'Bronze',
+    active: true
+  },
+  {
+    _id: ObjectId('6acc82269c7be04c4ac48cd2'),
+    customer_id: 105,
+    name: 'Rohit Kumar',
+    age: 30,
+    city: 'Delhi',
+    email: 'rohit@gmail.com',
+    membership: 'Silver',
+    active: true
+  }
+]
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.products.find({
+|   tags: {$all: ["computer", "wireless"]}
+| })
+[
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd7'),
+    product_id: 205,
+    name: 'Keyboard',
+    category: 'Accessories',
+    price: 1500,
+    stock: 35,
+    tags: [ 'computer', 'wireless' ],
+    rating: 3.8
+  }
+]
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.products.find().sort({
+|   price: -1
+| })
+[
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd3'),
+    product_id: 201,
+    name: 'Laptop',
+    category: 'Electronics',
+    price: 55000,
+    stock: 10,
+    tags: [ 'computer', 'electronics' ],
+    rating: 4.5
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd4'),
+    product_id: 202,
+    name: 'Smartphone',
+    category: 'Electronics',
+    price: 25000,
+    stock: 20,
+    tags: [ 'mobile', 'electronics' ],
+    rating: 4.2
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd6'),
+    product_id: 204,
+    name: 'Office Chair',
+    category: 'Furniture',
+    price: 7000,
+    stock: 15,
+    tags: [ 'office', 'furniture' ],
+    rating: 4.3
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd5'),
+    product_id: 203,
+    name: 'Headphones',
+    category: 'Accessories',
+    price: 2000,
+    stock: 50,
+    tags: [ 'audio', 'wireless' ],
+    rating: 4
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd7'),
+    product_id: 205,
+    name: 'Keyboard',
+    category: 'Accessories',
+    price: 1500,
+    stock: 35,
+    tags: [ 'computer', 'wireless' ],
+    rating: 3.8
+  }
+]
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.products.find()
+|   .sort({price: -1})
+|   .limit(3)
+[
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd3'),
+    product_id: 201,
+    name: 'Laptop',
+    category: 'Electronics',
+    price: 55000,
+    stock: 10,
+    tags: [ 'computer', 'electronics' ],
+    rating: 4.5
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd4'),
+    product_id: 202,
+    name: 'Smartphone',
+    category: 'Electronics',
+    price: 25000,
+    stock: 20,
+    tags: [ 'mobile', 'electronics' ],
+    rating: 4.2
+  },
+  {
+    _id: ObjectId('6acc823a9c7be04c4ac48cd6'),
+    product_id: 204,
+    name: 'Office Chair',
+    category: 'Furniture',
+    price: 7000,
+    stock: 15,
+    tags: [ 'office', 'furniture' ],
+    rating: 4.3
+  }
+]
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.customers.updateOne(
+|   {customer_id: 101},
+|   {$set: {membership: "Platinum"}}
+| )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.customers.findOne({customer_id: 101})
+{
+  _id: ObjectId('6acc82269c7be04c4ac48cce'),
+  customer_id: 101,
+  name: 'Aman Sharma',
+  age: 22,
+  city: 'Jaipur',
+  email: 'aman@gmail.com',
+  membership: 'Platinum',
+  active: true
+}
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.products.updateOne(
+|   {product_id: 201},
+|   {$inc: {stock: 10}}
+| )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.products.findOne({product_id: 201})
+{
+  _id: ObjectId('6acc823a9c7be04c4ac48cd3'),
+  product_id: 201,
+  name: 'Laptop',
+  category: 'Electronics',
+  price: 55000,
+  stock: 20,
+  tags: [ 'computer', 'electronics' ],
+  rating: 4.5
+}
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.products.updateOne(
+|   {product_id: 203},
+|   {$unset: {rating: ""}}
+| )
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.products.findOne({product_id: 203})
+{
+  _id: ObjectId('6acc823a9c7be04c4ac48cd5'),
+  product_id: 203,
+  name: 'Headphones',
+  category: 'Accessories',
+  price: 2000,
+  stock: 50,
+  tags: [ 'audio', 'wireless' ]
+}
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.orders.deleteOne({
+|   order_id: 302
+| })
+{ acknowledged: true, deletedCount: 1 }
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.orders.find({
+|   order_id: 302
+| })
+
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.orders.aggregate([
+|   {
+|     $group: {
+|       _id: "$status",
+|       totalOrders: {$sum: 1},
+|       totalSales: {$sum: "$total_amount"}
+|     }
+|   }
+| ])
+[
+  { _id: 'Delivered', totalOrders: 2, totalSales: 64000 },
+  { _id: 'Cancelled', totalOrders: 1, totalSales: 14000 },
+  { _id: 'Processing', totalOrders: 1, totalSales: 55000 }
+]
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.products.aggregate([
+|   {
+|     $project: {
+|       _id: 0,
+|       name: 1,
+|       price: 1
+|     }
+|   }
+| ])
+[
+  { name: 'Laptop', price: 55000 },
+  { name: 'Smartphone', price: 25000 },
+  { name: 'Headphones', price: 2000 },
+  { name: 'Office Chair', price: 7000 },
+  { name: 'Keyboard', price: 1500 }
+]
+Atlas atlas-mgn678-shard-0 [primary] ecommerceDB> db.orders.aggregate([
+|   {
+|     $match: {
+|       status: "Delivered"
+|     }
+|   },
+|   {
+|     $group: {
+|       _id: null,
+|       totalDeliveredOrders: {$sum: 1},
+|       totalRevenue: {$sum: "$total_amount"},
+|       averageOrderValue: {$avg: "$total_amount"}
+|     }
+|   },
+|   {
+|     $project: {
+|       _id: 0,
+|       totalDeliveredOrders: 1,
+|       totalRevenue: 1,
+|       averageOrderValue: 1
+|     }
+|   }
+| ])
+[
+  {
+    totalDeliveredOrders: 2,
+    totalRevenue: 64000,
+    averageOrderValue: 32000
+  }
+]
