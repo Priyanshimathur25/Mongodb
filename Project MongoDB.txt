@@ -1,0 +1,714 @@
+select database and students collection
+package com.example;
+
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import org.bson.Document;
+
+public class App {
+    public static void main(String[] args) {
+        String uri = System.getenv("MONGODB_URI");
+
+        if (uri == null || uri.isBlank()) {
+            System.out.println("Please set MONGODB_URI first.");
+            return;
+        }
+
+        try (MongoClient client = MongoClients.create(uri)) {
+            MongoDatabase database = client.getDatabase("college");
+            MongoCollection<Document> students =
+                    database.getCollection("students");
+
+            database.runCommand(new Document("ping", 1));
+
+            System.out.println("MongoDB connected successfully!");
+            System.out.println("Database selected: " + database.getName());
+            System.out.println("Collection selected: " + students.getNamespace().getCollectionName());
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+
+
+Build menu: Add Student, View Students, Exit
+package com.example;
+
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.MongoCollection;
+import org.bson.Document;
+import java.util.Scanner;
+
+public class App {
+    public static void main(String[] args) {
+        String uri = System.getenv("MONGODB_URI");
+
+        if (uri == null || uri.isBlank()) {
+            System.out.println("Please set MONGODB_URI first.");
+            return;
+        }
+
+        try (
+            MongoClient client = MongoClients.create(uri);
+            Scanner sc = new Scanner(System.in)
+        ) {
+            MongoDatabase database = client.getDatabase("college");
+            MongoCollection<Document> students =
+                    database.getCollection("students");
+
+            database.runCommand(new Document("ping", 1));
+            System.out.println("MongoDB connected successfully!");
+
+            while (true) {
+                System.out.println("\n--- Student Menu ---");
+                System.out.println("1. Add Student");
+                System.out.println("2. View Students");
+                System.out.println("3. Exit");
+                System.out.print("Enter choice: ");
+
+                if (!sc.hasNextInt()) {
+                    System.out.println("Invalid input!");
+                    sc.nextLine();
+                    continue;
+                }
+
+                int choice = sc.nextInt();
+                sc.nextLine();
+
+                if (choice == 1) {
+                    System.out.print("Enter student name: ");
+                    String name = sc.nextLine();
+
+                    System.out.print("Enter age: ");
+                    if (!sc.hasNextInt()) {
+                        System.out.println("Age must be a number!");
+                        sc.nextLine();
+                        continue;
+                    }
+                    int age = sc.nextInt();
+                    sc.nextLine();
+
+                    System.out.print("Enter course: ");
+                    String course = sc.nextLine();
+
+                    Document student = new Document("name", name)
+                            .append("age", age)
+                            .append("course", course);
+
+                    students.insertOne(student);
+                    System.out.println("Student added successfully!");
+
+                } else if (choice == 2) {
+                    System.out.println("\n--- Student Records ---");
+
+                    boolean found = false;
+
+                    for (Document student : students.find()) {
+                        System.out.println(student.toJson());
+                        found = true;
+                    }
+
+                    if (!found) {
+                        System.out.println("No students found.");
+                    }
+
+                } else if (choice == 3) {
+                    System.out.println("Exiting program...");
+                    break;
+
+                } else {
+                    System.out.println("Invalid choice!");
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+}
+
+
+
+Build search menu by ID, department, CGPA, skill and all
+package com.example;
+
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Filters;
+import org.bson.Document;
+import java.util.Scanner;
+
+public class App {
+    public static void main(String[] args) {
+        String uri = System.getenv("MONGODB_URI");
+
+        if (uri == null || uri.isBlank()) {
+            System.out.println("Please set MONGODB_URI first.");
+            return;
+        }
+
+        try (
+            MongoClient client = MongoClients.create(uri);
+            Scanner sc = new Scanner(System.in)
+        ) {
+            MongoDatabase database = client.getDatabase("college");
+            MongoCollection<Document> students =
+                    database.getCollection("students");
+
+            database.runCommand(new Document("ping", 1));
+            System.out.println("MongoDB connected successfully!");
+
+            while (true) {
+                System.out.println("\n--- Student Search Menu ---");
+                System.out.println("1. Search by ID");
+                System.out.println("2. Search by Department");
+                System.out.println("3. Search by CGPA");
+                System.out.println("4. Search by Skill");
+                System.out.println("5. View All Students");
+                System.out.println("6. Exit");
+                System.out.print("Enter choice: ");
+
+                if (!sc.hasNextInt()) {
+                    System.out.println("Invalid choice!");
+                    sc.nextLine();
+                    continue;
+                }
+
+                int choice = sc.nextInt();
+                sc.nextLine();
+
+                switch (choice) {
+                    case 1:
+                        System.out.print("Enter student ID: ");
+                        String id = sc.nextLine();
+
+                        Document byId = students.find(
+                                Filters.eq("studentId", id)).first();
+
+                        if (byId != null) {
+                            System.out.println(byId.toJson());
+                        } else {
+                            System.out.println("Student not found.");
+                        }
+                        break;
+
+                    case 2:
+                        System.out.print("Enter department: ");
+                        String departmentName = sc.nextLine();
+
+                        showStudents(students, Filters.eq(
+                                "department", departmentName));
+                        break;
+
+                    case 3:
+                        System.out.print("Enter minimum CGPA: ");
+                        if (!sc.hasNextDouble()) {
+                            System.out.println("Invalid CGPA!");
+                            sc.nextLine();
+                            break;
+                        }
+                        double cgpa = sc.nextDouble();
+                        sc.nextLine();
+
+                        showStudents(students, Filters.gte("cgpa", cgpa));
+                        break;
+
+                    case 4:
+                        System.out.print("Enter skill: ");
+                        String skill = sc.nextLine();
+
+                        showStudents(students, Filters.eq("skills", skill));
+                        break;
+
+                    case 5:
+                        showStudents(students, new Document());
+                        break;
+
+                    case 6:
+                        System.out.println("Exiting program...");
+                        return;
+
+                    default:
+                        System.out.println("Invalid choice!");
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    private static void showStudents(
+            MongoCollection<Document> students,
+            org.bson.conversions.Bson filter) {
+
+        boolean found = false;
+
+        for (Document student : students.find(filter)) {
+            System.out.println(student.toJson());
+            found = true;
+        }
+
+        if (!found) {
+            System.out.println("No matching students found.");
+        }
+    }
+}
+
+
+
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\WINDOWS\system32> cd C:\Users\ff\JavaMongoDB\mongodb-demo
+PS C:\Users\ff\JavaMongoDB\mongodb-demo> $env:MONGODB_URI = "mongosh "mongodb+srv://cluster0.35fwt2e.mongodb.net/" --apiVersion 1 --username 2024pceacspreksha126_db_user"
+At line:1 char:30
++ ... = "mongosh "mongodb+srv://cluster0.35fwt2e.mongodb.net/" --apiVersion ...
++                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Unexpected token 'mongodb+srv://cluster0.35fwt2e.mongodb.net/" --apiVersion 1
+--username 2024pceacspreksha126_db_user"' in expression or statement.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordExce
+   ption
+    + FullyQualifiedErrorId : UnexpectedToken
+
+PS C:\Users\ff\JavaMongoDB\mongodb-demo> $env:MONGODB_URI = mongosh "mongodb+srv://cluster0.35fwt2e.mongodb.net/" --apiVersion 1 --username 2024pceacspreksha126_db_user
+Enter password: *
+MongoServerError: bad auth : authentication failed
+PS C:\Users\ff\JavaMongoDB\mongodb-demo> $env:MONGODB_URI = mongosh "mongodb+srv://cluster0.35fwt2e.mongodb.net/" --apiVersion 1 --username 2024pceacspreksha126_db_user
+Enter password: *
+MongoServerError: bad auth : authentication failed
+PS C:\Users\ff\JavaMongoDB\mongodb-demo> i97MZ&tw@ev2Vt7
+At line:1 char:6
++ i97MZ&tw@ev2Vt7
++      ~
+The ampersand (&) character is not allowed. The & operator is reserved for
+future use; wrap an ampersand in double quotation marks ("&") to pass it as part
+of a string.
+    + CategoryInfo          : ParserError: (:) [], ParentContainsErrorRecordExce
+   ption
+    + FullyQualifiedErrorId : AmpersandNotAllowed
+
+PS C:\Users\ff\JavaMongoDB\mongodb-demo> i97MZ%26tw%40ev2Vt7
+i97MZ%26tw%40ev2Vt7 : The term 'i97MZ%26tw%40ev2Vt7' is not recognized as the
+name of a cmdlet, function, script file, or operable program. Check the spelling
+of the name, or if a path was included, verify that the path is correct and try
+again.
+At line:1 char:1
++ i97MZ%26tw%40ev2Vt7
++ ~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (i97MZ%26tw%40ev2Vt7:String) [], C
+   ommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\Users\ff\JavaMongoDB\mongodb-demo> $env:MONGODB_URI = mongosh "mongodb+srv://cluster0.35fwt2e.mongodb.net/" --apiVersion 1 --username 2024pceacspreksha126_db_user
+Enter password: *******************
+MongoServerError: bad auth : authentication failed
+PS C:\Users\ff\JavaMongoDB\mongodb-demo> $env:MONGODB_URI = mongosh "mongodb+srv://cluster0.35fwt2e.mongodb.net/" --apiVersion 1 --username 2024pceacspreksha126_db_user
+Enter password: *******************
+MongoServerError: bad auth : authentication failed
+PS C:\Users\ff\JavaMongoDB\mongodb-demo> $env:MONGODB_URI = mongosh "mongodb+srv://cluster0.35fwt2e.mongodb.net/" --apiVersion 1 --username 2024pceacspreksha126_db_user
+Enter password: *******************
+MongoServerError: bad auth : authentication failed
+PS C:\Users\ff\JavaMongoDB\mongodb-demo> $env:MONGODB_URI = "mongodb+srv://2024pceacspreksha126_db_user:i97MZ%26tw%40ev2Vt7@cluster0.35fwt2e.mongodb.net/"
+PS C:\Users\ff\JavaMongoDB\mongodb-demo> if ($env:MONGODB_URI) { "Connection URI is set" } else { "Connection URI is missing" }
+Connection URI is set
+PS C:\Users\ff\JavaMongoDB\mongodb-demo> mvn compile exec:java "-Dexec.mainClass=com.example.App"
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< com.example:mongodb-demo >----------------------
+[INFO] Building mongodb-demo 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.4.0:resources (default-resources) @ mongodb-demo ---
+[INFO] skip non existing resourceDirectory C:\Users\ff\JavaMongoDB\mongodb-demo\src\main\resources
+[INFO]
+[INFO] --- compiler:3.15.0:compile (default-compile) @ mongodb-demo ---
+[INFO] Nothing to compile - all classes are up to date.
+[INFO]
+[INFO] --- exec:3.5.0:java (default-cli) @ mongodb-demo ---
+Oct 15, 2026 8:28:19 AM com.mongodb.internal.diagnostics.logging.Loggers shouldUseSLF4J
+WARNING: SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
+ALL STUDENTS:
+{"_id": {"$oid": "6acc5cc284300d1d7a51d659"}, "student_id": 101, "name": "Aman", "age": 20, "gender": "Male", "department": "CSE", "marks": 90, "city": "Udaipur", "skills": ["Java", "MongoDB", "Python"], "active": true}
+{"_id": {"$oid": "6acc5cc284300d1d7a51d65a"}, "student_id": 102, "name": "Priya", "age": 22, "gender": "Female", "department": "ECE", "marks": 92, "city": "Delhi", "skills": ["Python", "C++"], "active": true}
+{"_id": {"$oid": "6acc5cc284300d1d7a51d65b"}, "student_id": 103, "name": "Rahul", "age": 21, "gender": "Male", "department": "CSE", "marks": 67, "city": "Jaipur", "skills": ["Java", "SQL"]}
+{"_id": {"$oid": "6acc5cc284300d1d7a51d65d"}, "student_id": 105, "name": "Rohit", "age": 19, "department": "CSE", "marks": 90, "city": "Delhi", "skills": ["Python", "C++"]}
+{"_id": {"$oid": "6acdb2326c178bc19be2a2c5"}, "name": "Amit", "age": 21, "course": "Computer Science"}
+{"_id": {"$oid": "6acddd5b344d6a3f61e21b18"}, "name": "Priya", "age": 22, "course": "Java"}
+{"_id": {"$oid": "6acdde59f218210105647349"}, "name": "Rahul", "age": 21, "course": "Java"}
+{"_id": {"$oid": "6acdde59f21821010564734a"}, "name": "Neha", "age": 20, "course": "Python"}
+{"_id": {"$oid": "6acdde59f21821010564734b"}, "name": "Aman", "age": 22, "course": "MongoDB"}
+{"_id": {"$oid": "6acdde59f21821010564734c"}, "name": "Priya", "age": 19, "course": "C++"}
+
+STUDENT NAMED RAHUL:
+{"_id": {"$oid": "6acc5cc284300d1d7a51d65b"}, "student_id": 103, "name": "Rahul", "age": 21, "gender": "Male", "department": "CSE", "marks": 67, "city": "Jaipur", "skills": ["Java", "SQL"]}
+{"_id": {"$oid": "6acdde59f218210105647349"}, "name": "Rahul", "age": 21, "course": "Java"}
+
+STUDENTS OLDER THAN 20:
+{"_id": {"$oid": "6acc5cc284300d1d7a51d65a"}, "student_id": 102, "name": "Priya", "age": 22, "gender": "Female", "department": "ECE", "marks": 92, "city": "Delhi", "skills": ["Python", "C++"], "active": true}
+{"_id": {"$oid": "6acc5cc284300d1d7a51d65b"}, "student_id": 103, "name": "Rahul", "age": 21, "gender": "Male", "department": "CSE", "marks": 67, "city": "Jaipur", "skills": ["Java", "SQL"]}
+{"_id": {"$oid": "6acdb2326c178bc19be2a2c5"}, "name": "Amit", "age": 21, "course": "Computer Science"}
+{"_id": {"$oid": "6acddd5b344d6a3f61e21b18"}, "name": "Priya", "age": 22, "course": "Java"}
+{"_id": {"$oid": "6acdde59f218210105647349"}, "name": "Rahul", "age": 21, "course": "Java"}
+{"_id": {"$oid": "6acdde59f21821010564734b"}, "name": "Aman", "age": 22, "course": "MongoDB"}
+[WARNING] thread Thread[Thread-2,5,com.example.App] was interrupted but is still alive after waiting at least 15000msecs
+[WARNING] thread Thread[Thread-2,5,com.example.App] will linger despite being asked to die via interruption
+[WARNING] thread Thread[BufferPoolPruner-1-thread-1,5,com.example.App] will linger despite being asked to die via interruption
+[WARNING] NOTE: 2 thread(s) did not finish despite being asked to via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
+[WARNING] Couldn't destroy threadgroup org.codehaus.mojo.exec.ExecJavaMojo$IsolatedThreadGroup[name=com.example.App,maxpri=10]
+java.lang.IllegalThreadStateException
+    at java.lang.ThreadGroup.destroy (ThreadGroup.java:803)
+    at org.codehaus.mojo.exec.ExecJavaMojo.execute (ExecJavaMojo.java:330)
+    at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:126)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2 (MojoExecutor.java:328)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:316)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
+    at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
+    at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:105)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:73)
+    at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:53)
+    at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:118)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:261)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:173)
+    at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:101)
+    at org.apache.maven.cli.MavenCli.execute (MavenCli.java:919)
+    at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:285)
+    at org.apache.maven.cli.MavenCli.main (MavenCli.java:207)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:569)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:255)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:201)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:362)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:314)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  19.923 s
+[INFO] Finished at: 2026-10-15T08:28:37+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\Users\ff\JavaMongoDB\mongodb-demo> mvn compile exec:java "-Dexec.mainClass=com.example.App"
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< com.example:mongodb-demo >----------------------
+[INFO] Building mongodb-demo 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.4.0:resources (default-resources) @ mongodb-demo ---
+[INFO] skip non existing resourceDirectory C:\Users\ff\JavaMongoDB\mongodb-demo\src\main\resources
+[INFO]
+[INFO] --- compiler:3.15.0:compile (default-compile) @ mongodb-demo ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug release 17] to target\classes
+[INFO]
+[INFO] --- exec:3.5.0:java (default-cli) @ mongodb-demo ---
+Oct 15, 2026 8:29:28 AM com.mongodb.internal.diagnostics.logging.Loggers shouldUseSLF4J
+WARNING: SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
+MongoDB connected successfully!
+
+--- Student Search Menu ---
+1. Search by ID
+2. Search by Department
+3. Search by CGPA
+4. Search by Skill
+5. View All Students
+6. Exit
+Enter choice: 1
+Enter student ID: 101
+Student not found.
+
+--- Student Search Menu ---
+1. Search by ID
+2. Search by Department
+3. Search by CGPA
+4. Search by Skill
+5. View All Students
+6. Exit
+Enter choice: 2
+Enter department: cse
+No matching students found.
+
+--- Student Search Menu ---
+1. Search by ID
+2. Search by Department
+3. Search by CGPA
+4. Search by Skill
+5. View All Students
+6. Exit
+Enter choice: 6
+Exiting program...
+[WARNING] thread Thread[Thread-2,5,com.example.App] was interrupted but is still alive after waiting at least 14998msecs
+[WARNING] thread Thread[Thread-2,5,com.example.App] will linger despite being asked to die via interruption
+[WARNING] thread Thread[BufferPoolPruner-1-thread-1,5,com.example.App] will linger despite being asked to die via interruption
+[WARNING] NOTE: 2 thread(s) did not finish despite being asked to via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
+[WARNING] Couldn't destroy threadgroup org.codehaus.mojo.exec.ExecJavaMojo$IsolatedThreadGroup[name=com.example.App,maxpri=10]
+java.lang.IllegalThreadStateException
+    at java.lang.ThreadGroup.destroy (ThreadGroup.java:803)
+    at org.codehaus.mojo.exec.ExecJavaMojo.execute (ExecJavaMojo.java:330)
+    at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:126)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2 (MojoExecutor.java:328)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:316)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
+    at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
+    at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:105)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:73)
+    at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:53)
+    at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:118)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:261)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:173)
+    at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:101)
+    at org.apache.maven.cli.MavenCli.execute (MavenCli.java:919)
+    at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:285)
+    at org.apache.maven.cli.MavenCli.main (MavenCli.java:207)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:569)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:255)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:201)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:362)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:314)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  05:04 min
+[INFO] Finished at: 2026-10-15T08:34:30+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\Users\ff\JavaMongoDB\mongodb-demo> mvn compile exec:java "-Dexec.mainClass=com.example.App"
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< com.example:mongodb-demo >----------------------
+[INFO] Building mongodb-demo 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.4.0:resources (default-resources) @ mongodb-demo ---
+[INFO] skip non existing resourceDirectory C:\Users\ff\JavaMongoDB\mongodb-demo\src\main\resources
+[INFO]
+[INFO] --- compiler:3.15.0:compile (default-compile) @ mongodb-demo ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug release 17] to target\classes
+[INFO]
+[INFO] --- exec:3.5.0:java (default-cli) @ mongodb-demo ---
+Oct 15, 2026 8:35:03 AM com.mongodb.internal.diagnostics.logging.Loggers shouldUseSLF4J
+WARNING: SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
+MongoDB connected successfully!
+Database selected: college
+Collection selected: students
+[WARNING] thread Thread[Thread-2,5,com.example.App] was interrupted but is still alive after waiting at least 15000msecs
+[WARNING] thread Thread[Thread-2,5,com.example.App] will linger despite being asked to die via interruption
+[WARNING] thread Thread[BufferPoolPruner-1-thread-1,5,com.example.App] will linger despite being asked to die via interruption
+[WARNING] NOTE: 2 thread(s) did not finish despite being asked to via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
+[WARNING] Couldn't destroy threadgroup org.codehaus.mojo.exec.ExecJavaMojo$IsolatedThreadGroup[name=com.example.App,maxpri=10]
+java.lang.IllegalThreadStateException
+    at java.lang.ThreadGroup.destroy (ThreadGroup.java:803)
+    at org.codehaus.mojo.exec.ExecJavaMojo.execute (ExecJavaMojo.java:330)
+    at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:126)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2 (MojoExecutor.java:328)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:316)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
+    at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
+    at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:105)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:73)
+    at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:53)
+    at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:118)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:261)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:173)
+    at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:101)
+    at org.apache.maven.cli.MavenCli.execute (MavenCli.java:919)
+    at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:285)
+    at org.apache.maven.cli.MavenCli.main (MavenCli.java:207)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:569)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:255)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:201)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:362)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:314)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  20.434 s
+[INFO] Finished at: 2026-10-15T08:35:21+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\Users\ff\JavaMongoDB\mongodb-demo> mvn compile exec:java "-Dexec.mainClass=com.example.App"
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< com.example:mongodb-demo >----------------------
+[INFO] Building mongodb-demo 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.4.0:resources (default-resources) @ mongodb-demo ---
+[INFO] skip non existing resourceDirectory C:\Users\ff\JavaMongoDB\mongodb-demo\src\main\resources
+[INFO]
+[INFO] --- compiler:3.15.0:compile (default-compile) @ mongodb-demo ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug release 17] to target\classes
+[INFO]
+[INFO] --- exec:3.5.0:java (default-cli) @ mongodb-demo ---
+Oct 15, 2026 8:35:56 AM com.mongodb.internal.diagnostics.logging.Loggers shouldUseSLF4J
+WARNING: SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
+MongoDB connected successfully!
+
+--- Student Menu ---
+1. Add Student
+2. View Students
+3. Exit
+Enter choice: 2
+
+--- Student Records ---
+No students found.
+
+--- Student Menu ---
+1. Add Student
+2. View Students
+3. Exit
+Enter choice: 3
+Exiting program...
+[WARNING] thread Thread[Thread-2,5,com.example.App] was interrupted but is still alive after waiting at least 15000msecs
+[WARNING] thread Thread[Thread-2,5,com.example.App] will linger despite being asked to die via interruption
+[WARNING] thread Thread[BufferPoolPruner-1-thread-1,5,com.example.App] will linger despite being asked to die via interruption
+[WARNING] NOTE: 2 thread(s) did not finish despite being asked to via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
+[WARNING] Couldn't destroy threadgroup org.codehaus.mojo.exec.ExecJavaMojo$IsolatedThreadGroup[name=com.example.App,maxpri=10]
+java.lang.IllegalThreadStateException
+    at java.lang.ThreadGroup.destroy (ThreadGroup.java:803)
+    at org.codehaus.mojo.exec.ExecJavaMojo.execute (ExecJavaMojo.java:330)
+    at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:126)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2 (MojoExecutor.java:328)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:316)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
+    at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
+    at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:105)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:73)
+    at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:53)
+    at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:118)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:261)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:173)
+    at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:101)
+    at org.apache.maven.cli.MavenCli.execute (MavenCli.java:919)
+    at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:285)
+    at org.apache.maven.cli.MavenCli.main (MavenCli.java:207)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:569)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:255)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:201)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:362)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:314)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  42.181 s
+[INFO] Finished at: 2026-10-15T08:36:36+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\Users\ff\JavaMongoDB\mongodb-demo> mvn compile exec:java "-Dexec.mainClass=com.example.App"
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< com.example:mongodb-demo >----------------------
+[INFO] Building mongodb-demo 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- resources:3.4.0:resources (default-resources) @ mongodb-demo ---
+[INFO] skip non existing resourceDirectory C:\Users\ff\JavaMongoDB\mongodb-demo\src\main\resources
+[INFO]
+[INFO] --- compiler:3.15.0:compile (default-compile) @ mongodb-demo ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug release 17] to target\classes
+[INFO]
+[INFO] --- exec:3.5.0:java (default-cli) @ mongodb-demo ---
+Oct 15, 2026 8:37:23 AM com.mongodb.internal.diagnostics.logging.Loggers shouldUseSLF4J
+WARNING: SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
+MongoDB connected successfully!
+
+--- Student Search Menu ---
+1. Search by ID
+2. Search by Department
+3. Search by CGPA
+4. Search by Skill
+5. View All Students
+6. Exit
+Enter choice: 2
+Enter department: IT
+No matching students found.
+
+--- Student Search Menu ---
+1. Search by ID
+2. Search by Department
+3. Search by CGPA
+4. Search by Skill
+5. View All Students
+6. Exit
+Enter choice: 6
+Exiting program...
+[WARNING] thread Thread[Thread-2,5,com.example.App] was interrupted but is still alive after waiting at least 15000msecs
+[WARNING] thread Thread[Thread-2,5,com.example.App] will linger despite being asked to die via interruption
+[WARNING] thread Thread[BufferPoolPruner-1-thread-1,5,com.example.App] will linger despite being asked to die via interruption
+[WARNING] NOTE: 2 thread(s) did not finish despite being asked to via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
+[WARNING] Couldn't destroy threadgroup org.codehaus.mojo.exec.ExecJavaMojo$IsolatedThreadGroup[name=com.example.App,maxpri=10]
+java.lang.IllegalThreadStateException
+    at java.lang.ThreadGroup.destroy (ThreadGroup.java:803)
+    at org.codehaus.mojo.exec.ExecJavaMojo.execute (ExecJavaMojo.java:330)
+    at org.apache.maven.plugin.DefaultBuildPluginManager.executeMojo (DefaultBuildPluginManager.java:126)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute2 (MojoExecutor.java:328)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.doExecute (MojoExecutor.java:316)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:212)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:174)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.access$000 (MojoExecutor.java:75)
+    at org.apache.maven.lifecycle.internal.MojoExecutor$1.run (MojoExecutor.java:162)
+    at org.apache.maven.plugin.DefaultMojosExecutionStrategy.execute (DefaultMojosExecutionStrategy.java:39)
+    at org.apache.maven.lifecycle.internal.MojoExecutor.execute (MojoExecutor.java:159)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:105)
+    at org.apache.maven.lifecycle.internal.LifecycleModuleBuilder.buildProject (LifecycleModuleBuilder.java:73)
+    at org.apache.maven.lifecycle.internal.builder.singlethreaded.SingleThreadedBuilder.build (SingleThreadedBuilder.java:53)
+    at org.apache.maven.lifecycle.internal.LifecycleStarter.execute (LifecycleStarter.java:118)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:261)
+    at org.apache.maven.DefaultMaven.doExecute (DefaultMaven.java:173)
+    at org.apache.maven.DefaultMaven.execute (DefaultMaven.java:101)
+    at org.apache.maven.cli.MavenCli.execute (MavenCli.java:919)
+    at org.apache.maven.cli.MavenCli.doMain (MavenCli.java:285)
+    at org.apache.maven.cli.MavenCli.main (MavenCli.java:207)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke0 (Native Method)
+    at jdk.internal.reflect.NativeMethodAccessorImpl.invoke (NativeMethodAccessorImpl.java:77)
+    at jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke (DelegatingMethodAccessorImpl.java:43)
+    at java.lang.reflect.Method.invoke (Method.java:569)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launchEnhanced (Launcher.java:255)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.launch (Launcher.java:201)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.mainWithExitCode (Launcher.java:362)
+    at org.codehaus.plexus.classworlds.launcher.Launcher.main (Launcher.java:314)
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  43.219 s
+[INFO] Finished at: 2026-10-15T08:38:04+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\Users\ff\JavaMongoDB\mongodb-demo>
+
+
+

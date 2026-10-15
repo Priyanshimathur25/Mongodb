@@ -1,0 +1,684 @@
+PS C:\java-mongodb> cd C:\java-mongodb
+PS C:\java-mongodb> code src\main\java\com\college\App.java
+PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://2024pceacspriyanshi131_db_user:QGbFL9PsQRDZtuIU@cluster0.fgszsfn.mongodb.net/"
+PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
+[INFO] Scanning for projects...
+[INFO] Loaded 24090 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ java-mongodb ---
+[INFO] Deleting C:\java-mongodb\target
+[INFO]
+[INFO] --- resources:3.5.0:resources (default-resources) @ java-mongodb ---
+[INFO] skip non existing resourceDirectory C:\java-mongodb\src\main\resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ java-mongodb ---
+[INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug target 17] to target\classes
+[WARNING] location of system modules is not set in conjunction with -source 17
+  not setting the location of system modules may lead to class files that cannot run on JDK 17
+    --release 17 is recommended instead of -source 17 -target 17 because it sets the location of system modules automatically
+[INFO]
+[INFO] --- exec:3.6.4:java (default-cli) @ java-mongodb ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+Oct 15, 2026 8:45:15 AM com.mongodb.internal.diagnostics.logging.Loggers shouldUseSLF4J
+WARNING: SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
+MongoDB connected successfully!
+
+--- Student Menu ---
+1. Add Student
+2. View Students
+3. Exit
+Enter choice: 1
+Enter student name: Priyanshi
+Enter age: 20
+Enter course: cse
+Student added successfully!
+
+--- Student Menu ---
+1. Add Student
+2. View Students
+3. Exit
+Enter choice: 2
+
+--- Student Records ---
+{"_id": {"$oid": "6ad0456792d517fec0c654f3"}, "name": "Priyanshi", "age": 20, "course": "cse"}
+
+--- Student Menu ---
+1. Add Student
+2. View Students
+3. Exit
+Enter choice: 3
+Exiting program...
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] was interrupted but is still alive after waiting at least 14999msecs
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] will linger despite being asked to die via interruption
+[WARNING] NOTE: 1 thread(s) did not finish despite being asked to via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:13 min
+[INFO] Finished at: 2026-10-15T08:46:21+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://2024pceacspriyanshi131_db_user:QGbFL9PsQRDZtuIU@cluster0.fgszsfn.mongodb.net/"
+PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
+[INFO] Scanning for projects...
+[INFO] Loaded 24090 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ java-mongodb ---
+[INFO] Deleting C:\java-mongodb\target
+[INFO]
+[INFO] --- resources:3.5.0:resources (default-resources) @ java-mongodb ---
+[INFO] skip non existing resourceDirectory C:\java-mongodb\src\main\resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ java-mongodb ---
+[INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug target 17] to target\classes
+[WARNING] location of system modules is not set in conjunction with -source 17
+  not setting the location of system modules may lead to class files that cannot run on JDK 17
+    --release 17 is recommended instead of -source 17 -target 17 because it sets the location of system modules automatically
+[INFO]
+[INFO] --- exec:3.6.4:java (default-cli) @ java-mongodb ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+Oct 15, 2026 8:50:48 AM com.mongodb.internal.diagnostics.logging.Loggers shouldUseSLF4J
+WARNING: SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
+MongoDB connected successfully!
+Database selected: college
+Collection selected: students
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] was interrupted but is still alive after waiting at least 15000msecs
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] will linger despite being asked to die via interruption
+[WARNING] NOTE: 1 thread(s) did not finish despite being asked to via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  22.420 s
+[INFO] Finished at: 2026-10-15T08:51:05+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://2024pceacspriyanshi131_db_user:QGbFL9PsQRDZtuIU@cluster0.fgszsfn.mongodb.net/"
+PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
+[INFO] Scanning for projects...
+[INFO] Loaded 24090 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ java-mongodb ---
+[INFO] Deleting C:\java-mongodb\target
+[INFO]
+[INFO] --- resources:3.5.0:resources (default-resources) @ java-mongodb ---
+[INFO] skip non existing resourceDirectory C:\java-mongodb\src\main\resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ java-mongodb ---
+[INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug target 17] to target\classes
+[WARNING] location of system modules is not set in conjunction with -source 17
+  not setting the location of system modules may lead to class files that cannot run on JDK 17
+    --release 17 is recommended instead of -source 17 -target 17 because it sets the location of system modules automatically
+[INFO]
+[INFO] --- exec:3.6.4:java (default-cli) @ java-mongodb ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+Oct 15, 2026 8:52:59 AM com.mongodb.internal.diagnostics.logging.Loggers shouldUseSLF4J
+WARNING: SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
+MongoDB connected successfully!
+
+--- Student Search Menu ---
+1. Search by ID
+2. Search by Department
+3. Search by CGPA
+4. Search by Skill
+5. View All Students
+6. Exit
+Enter choice: 5
+{"_id": {"$oid": "6ad0456792d517fec0c654f3"}, "name": "Priyanshi", "age": 20, "course": "cse"}
+
+--- Student Search Menu ---
+1. Search by ID
+2. Search by Department
+3. Search by CGPA
+4. Search by Skill
+5. View All Students
+6. Exit
+Enter choice: 2
+Enter department: 1
+No matching students found.
+
+--- Student Search Menu ---
+1. Search by ID
+2. Search by Department
+3. Search by CGPA
+4. Search by Skill
+5. View All Students
+6. Exit
+Enter choice: 1
+Enter student ID: 1234
+Student not found.
+
+--- Student Search Menu ---
+1. Search by ID
+2. Search by Department
+3. Search by CGPA
+4. Search by Skill
+5. View All Students
+6. Exit
+Enter choice: 3
+Enter minimum CGPA: 9
+No matching students found.
+
+--- Student Search Menu ---
+1. Search by ID
+2. Search by Department
+3. Search by CGPA
+4. Search by Skill
+5. View All Students
+6. Exit
+Enter choice: 4
+Enter skill:
+No matching students found.
+
+--- Student Search Menu ---
+1. Search by ID
+2. Search by Department
+3. Search by CGPA
+4. Search by Skill
+5. View All Students
+6. Exit
+Enter choice: 6
+Exiting program...
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] was interrupted but is still alive after waiting at least 15000msecs
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] will linger despite being asked to die via interruption
+[WARNING] NOTE: 1 thread(s) did not finish despite being asked to via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:05 min
+[INFO] Finished at: 2026-10-15T08:53:57+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\java-mongodb>
+---
+PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://2024pceacspriyanshi131_db_user:YOUR_URL_ENCODED_PASSWORD@cluster0.fgszsfn.mongodb.net/"
+PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
+[INFO] Scanning for projects...
+[INFO] Loaded 24090 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ java-mongodb ---
+[INFO] Deleting C:\java-mongodb\target
+[INFO]
+[INFO] --- resources:3.5.0:resources (default-resources) @ java-mongodb ---
+[INFO] skip non existing resourceDirectory C:\java-mongodb\src\main\resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ java-mongodb ---
+[INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug target 17] to target\classes
+[WARNING] location of system modules is not set in conjunction with -source 17
+  not setting the location of system modules may lead to class files that cannot run on JDK 17
+    --release 17 is recommended instead of -source 17 -target 17 because it sets the location of system modules automatically
+[INFO]
+[INFO] --- exec:3.6.4:java (default-cli) @ java-mongodb ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+Oct 15, 2026 8:42:36 AM com.mongodb.internal.diagnostics.logging.Loggers shouldUseSLF4J
+WARNING: SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
+Error: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='2024pceacspriyanshi131_db_user', source='admin', password=<hidden>, mechanismProperties=<hidden>}
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] was interrupted but is still alive after waiting at least 15000msecs
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] will linger despite being asked to die via interruption
+[WARNING] NOTE: 1 thread(s) did not finish despite being asked to via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  23.244 s
+[INFO] Finished at: 2026-10-15T08:42:53+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
+[INFO] Scanning for projects...
+[INFO] Loaded 24090 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ java-mongodb ---
+[INFO] Deleting C:\java-mongodb\target
+[INFO]
+[INFO] --- resources:3.5.0:resources (default-resources) @ java-mongodb ---
+[INFO] skip non existing resourceDirectory C:\java-mongodb\src\main\resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ java-mongodb ---
+[INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug target 17] to target\classes
+[WARNING] location of system modules is not set in conjunction with -source 17
+  not setting the location of system modules may lead to class files that cannot run on JDK 17
+    --release 17 is recommended instead of -source 17 -target 17 because it sets the location of system modules automatically
+[INFO]
+[INFO] --- exec:3.6.4:java (default-cli) @ java-mongodb ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+Oct 15, 2026 8:43:16 AM com.mongodb.internal.diagnostics.logging.Loggers shouldUseSLF4J
+WARNING: SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
+Error: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='2024pceacspriyanshi131_db_user', source='admin', password=<hidden>, mechanismProperties=<hidden>}
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] was interrupted but is still alive after waiting at least 15000msecs
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] will linger despite being asked to die via interruption
+[WARNING] NOTE: 1 thread(s) did not finish despite being asked to via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  26.421 s
+[INFO] Finished at: 2026-10-15T08:43:34+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://2024pceacspriyanshi131_db_user:QGbFL9PsQRDZtuIU@cluster0.fgszsfn.mongodb.net/"
+PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
+[INFO] Scanning for projects...
+[INFO] Loaded 24090 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ java-mongodb ---
+[INFO] Deleting C:\java-mongodb\target
+[INFO]
+[INFO] --- resources:3.5.0:resources (default-resources) @ java-mongodb ---
+[INFO] skip non existing resourceDirectory C:\java-mongodb\src\main\resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ java-mongodb ---
+[INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug target 17] to target\classes
+[WARNING] location of system modules is not set in conjunction with -source 17
+  not setting the location of system modules may lead to class files that cannot run on JDK 17
+    --release 17 is recommended instead of -source 17 -target 17 because it sets the location of system modules automatically
+[INFO]
+[INFO] --- exec:3.6.4:java (default-cli) @ java-mongodb ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+Oct 15, 2026 8:45:15 AM com.mongodb.internal.diagnostics.logging.Loggers shouldUseSLF4J
+WARNING: SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
+MongoDB connected successfully!
+
+--- Student Menu ---
+1. Add Student
+2. View Students
+3. Exit
+Enter choice: 1
+Enter student name: Priyanshi
+Enter age: 20
+Enter course: cse
+Student added successfully!
+
+--- Student Menu ---
+1. Add Student
+2. View Students
+3. Exit
+Enter choice: 2
+
+--- Student Records ---
+{"_id": {"$oid": "6ad0456792d517fec0c654f3"}, "name": "Priyanshi", "age": 20, "course": "cse"}
+
+--- Student Menu ---
+1. Add Student
+2. View Students
+3. Exit
+Enter choice: 3
+Exiting program...
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] was interrupted but is still alive after waiting at least 14999msecs
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] will linger despite being asked to die via interruption
+[WARNING] NOTE: 1 thread(s) did not finish despite being asked to via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:13 min
+[INFO] Finished at: 2026-10-15T08:46:21+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://2024pceacspriyanshi131_db_user:QGbFL9PsQRDZtuIU@cluster0.fgszsfn.mongodb.net/"
+PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
+[INFO] Scanning for projects...
+[INFO] Loaded 24090 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ java-mongodb ---
+[INFO] Deleting C:\java-mongodb\target
+[INFO]
+[INFO] --- resources:3.5.0:resources (default-resources) @ java-mongodb ---
+[INFO] skip non existing resourceDirectory C:\java-mongodb\src\main\resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ java-mongodb ---
+[INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug target 17] to target\classes
+[WARNING] location of system modules is not set in conjunction with -source 17
+  not setting the location of system modules may lead to class files that cannot run on JDK 17
+    --release 17 is recommended instead of -source 17 -target 17 because it sets the location of system modules automatically
+[INFO]
+[INFO] --- exec:3.6.4:java (default-cli) @ java-mongodb ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+Oct 15, 2026 8:50:48 AM com.mongodb.internal.diagnostics.logging.Loggers shouldUseSLF4J
+WARNING: SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
+MongoDB connected successfully!
+Database selected: college
+Collection selected: students
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] was interrupted but is still alive after waiting at least 15000msecs
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] will linger despite being asked to die via interruption
+[WARNING] NOTE: 1 thread(s) did not finish despite being asked to via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  22.420 s
+[INFO] Finished at: 2026-10-15T08:51:05+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://2024pceacspriyanshi131_db_user:QGbFL9PsQRDZtuIU@cluster0.fgszsfn.mongodb.net/"
+PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
+[INFO] Scanning for projects...
+[INFO] Loaded 24090 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ java-mongodb ---
+[INFO] Deleting C:\java-mongodb\target
+[INFO]
+[INFO] --- resources:3.5.0:resources (default-resources) @ java-mongodb ---
+[INFO] skip non existing resourceDirectory C:\java-mongodb\src\main\resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ java-mongodb ---
+[INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug target 17] to target\classes
+[WARNING] location of system modules is not set in conjunction with -source 17
+  not setting the location of system modules may lead to class files that cannot run on JDK 17
+    --release 17 is recommended instead of -source 17 -target 17 because it sets the location of system modules automatically
+[INFO]
+[INFO] --- exec:3.6.4:java (default-cli) @ java-mongodb ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+Oct 15, 2026 8:52:59 AM com.mongodb.internal.diagnostics.logging.Loggers shouldUseSLF4J
+WARNING: SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
+MongoDB connected successfully!
+
+--- Student Search Menu ---
+1. Search by ID
+2. Search by Department
+3. Search by CGPA
+4. Search by Skill
+5. View All Students
+6. Exit
+Enter choice: 5
+{"_id": {"$oid": "6ad0456792d517fec0c654f3"}, "name": "Priyanshi", "age": 20, "course": "cse"}
+
+--- Student Search Menu ---
+1. Search by ID
+2. Search by Department
+3. Search by CGPA
+4. Search by Skill
+5. View All Students
+6. Exit
+Enter choice: 2
+Enter department: 1
+No matching students found.
+
+--- Student Search Menu ---
+1. Search by ID
+2. Search by Department
+3. Search by CGPA
+4. Search by Skill
+5. View All Students
+6. Exit
+Enter choice: 1
+Enter student ID: 1234
+Student not found.
+
+--- Student Search Menu ---
+1. Search by ID
+2. Search by Department
+3. Search by CGPA
+4. Search by Skill
+5. View All Students
+6. Exit
+Enter choice: 3
+Enter minimum CGPA: 9
+No matching students found.
+
+--- Student Search Menu ---
+1. Search by ID
+2. Search by Department
+3. Search by CGPA
+4. Search by Skill
+5. View All Students
+6. Exit
+Enter choice: 4
+Enter skill:
+No matching students found.
+
+--- Student Search Menu ---
+1. Search by ID
+2. Search by Department
+3. Search by CGPA
+4. Search by Skill
+5. View All Students
+6. Exit
+Enter choice: 6
+Exiting program...
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] was interrupted but is still alive after waiting at least 15000msecs
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] will linger despite being asked to die via interruption
+[WARNING] NOTE: 1 thread(s) did not finish despite being asked to via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  01:05 min
+[INFO] Finished at: 2026-10-15T08:53:57+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\java-mongodb> cd C:\java-mongodb
+PS C:\java-mongodb> code .
+PS C:\java-mongodb> code src\main\java\com\college\SearchStudents.java
+PS C:\java-mongodb> code src\main\java\com\college\UpdateUpsertStudents.java
+
+PS C:\java-mongodb> cd C:\java-mongodb
+PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.UpdateUpsertStudents"
+[INFO] Scanning for projects...
+[INFO] Loaded 24090 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ java-mongodb ---
+[INFO] Deleting C:\java-mongodb\target
+[INFO]
+[INFO] --- resources:3.5.0:resources (default-resources) @ java-mongodb ---
+[INFO] skip non existing resourceDirectory C:\java-mongodb\src\main\resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ java-mongodb ---
+[INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 2 source files with javac [debug target 17] to target\classes
+[WARNING] location of system modules is not set in conjunction with -source 17
+  not setting the location of system modules may lead to class files that cannot run on JDK 17
+    --release 17 is recommended instead of -source 17 -target 17 because it sets the location of system modules automatically
+[INFO]
+[INFO] --- exec:3.6.4:java (default-cli) @ java-mongodb ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+[WARNING]
+java.lang.ClassNotFoundException: com.college.UpdateUpsertStudents
+    at org.codehaus.mojo.exec.URLClassLoaderBuilder$ExecJavaClassLoader.loadClass (URLClassLoaderBuilder.java:211)
+    at java.lang.ClassLoader.loadClass (ClassLoader.java:502)
+    at org.codehaus.mojo.exec.AbstractExecJavaBase.doExecClassLoader (AbstractExecJavaBase.java:376)
+    at org.codehaus.mojo.exec.AbstractExecJavaBase.lambda$execute$0 (AbstractExecJavaBase.java:287)
+    at java.lang.Thread.run (Thread.java:1516)
+[INFO] ------------------------------------------------------------------------
+[ERROR] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  9.525 s
+[INFO] Finished at: 2026-10-15T10:16:25+05:30
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.codehaus.mojo:exec-maven-plugin:3.6.4:java (default-cli) on project java-mongodb: An exception occurred while executing the Java class. com.college.UpdateUpsertStudents -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
+PS C:\java-mongodb> cd C:\java-mongodb
+PS C:\java-mongodb> Get-ChildItem src\main\java -Recurse -Filter *.java
+
+
+    Directory: C:\java-mongodb\src\main\java\com\college
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        15-10-2026     08:52           4401 App.java
+-a----        15-10-2026     10:14           4449 SearchStudents.java
+
+
+PS C:\java-mongodb> ^C
+PS C:\java-mongodb> Get-Content src\main\java\com\college\UpdateUpsertStudents.java -TotalCount 5
+Get-Content : Cannot find path
+'C:\java-mongodb\src\main\java\com\college\UpdateUpsertStudents.java'
+because it does not exist.
+At line:1 char:1
++ Get-Content src\main\java\com\college\UpdateUpsertStudents.java -Tota ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (C:\java-mongodb...rtStudent
+   s.java:String) [Get-Content], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.G
+   etContentCommand
+
+PS C:\java-mongodb> New-Item -Path src\main\java\com\college\UpdateUpsertStudents.java -ItemType File
+
+
+    Directory: C:\java-mongodb\src\main\java\com\college
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        15-10-2026     10:22              0 UpdateUpsertStudents.java
+
+
+PS C:\java-mongodb> code src\main\java\com\college\UpdateUpsertStudents.java
+
+PS C:\java-mongodb> cd C:\java-mongodb
+PS C:\java-mongodb> mvn clean compile
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 24090 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ java-mongodb ---
+[INFO] Deleting C:\java-mongodb\target
+[INFO]
+[INFO] --- resources:3.5.0:resources (default-resources) @ java-mongodb ---
+[INFO] skip non existing resourceDirectory C:\java-mongodb\src\main\resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ java-mongodb ---
+[INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 3 source files with javac [debug target 17] to target\classes
+[WARNING] location of system modules is not set in conjunction with -source 17
+  not setting the location of system modules may lead to class files that cannot run on JDK 17
+    --release 17 is recommended instead of -source 17 -target 17 because it sets the location of system modules automatically
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  9.198 s
+[INFO] Finished at: 2026-10-15T10:23:41+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\java-mongodb> mvn exec:java "-Dexec.mainClass=com.college.UpdateUpsertStudents"
+[INFO] Scanning for projects...
+[INFO] Loaded 24090 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- exec:3.6.4:java (default-cli) @ java-mongodb ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+Oct 15, 2026 10:24:07 AM com.mongodb.internal.diagnostics.logging.Loggers shouldUseSLF4J
+WARNING: SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
+MongoDB connected successfully!
+
+--- Update + Upsert Menu ---
+1. Update CGPA
+2. Update Email
+3. Add Skill
+4. Update Phone
+5. Upsert Student
+6. View All Students
+7. Exit
+Enter choice: 1
+Enter student ID: 123
+Enter new CGPA: 8.7
+Student not found.
+
+--- Update + Upsert Menu ---
+1. Update CGPA
+2. Update Email
+3. Add Skill
+4. Update Phone
+5. Upsert Student
+6. View All Students
+7. Exit
+Enter choice: 6
+{"_id": {"$oid": "6ad0456792d517fec0c654f3"}, "name": "Priyanshi", "age": 20, "course": "cse"}
+
+--- Update + Upsert Menu ---
+1. Update CGPA
+2. Update Email
+3. Add Skill
+4. Update Phone
+5. Upsert Student
+6. View All Students
+7. Exit
+Enter choice: 5
+Enter student ID: 7
+Enter name:
+Enter department:
+Enter CGPA:
+Invalid CGPA!
+
+--- Update + Upsert Menu ---
+1. Update CGPA
+2. Update Email
+3. Add Skill
+4. Update Phone
+5. Upsert Student
+6. View All Students
+7. Exit
+Enter choice: 7
+Exiting program...
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.UpdateUpsertStudents] was interrupted but is still alive after waiting at least 14988msecs
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.UpdateUpsertStudents] will linger despite being asked to die via interruption
+[WARNING] NOTE: 1 thread(s) did not finish despite being asked to via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  04:41 min
+[INFO] Finished at: 2026-10-15T10:28:45+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\java-mongodb>                                                         
