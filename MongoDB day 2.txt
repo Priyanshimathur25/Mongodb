@@ -1,0 +1,411 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+PS C:\Users\mathu> cd C:\java-mongodb
+PS C:\java-mongodb> code .
+PS C:\java-mongodb> code pom.xml
+PS C:\java-mongodb> mvn clean compile
+[INFO] Scanning for projects...
+[ERROR] [ERROR] Some problems were encountered while processing the POMs:
+[FATAL] Non-parseable POM C:\java-mongodb\pom.xml: processing instruction can not have PITarget with reserved xml name (position: START_DOCUMENT seen \r\n<?xml ... @2:7) @ line 2, column 7
+[ERROR]
+[ERROR] The build could not read 1 project -> [Help 1]
+[ERROR]
+[ERROR]   The project (C:\java-mongodb\pom.xml) has 1 error
+[ERROR]     Non-parseable POM C:\java-mongodb\pom.xml: processing instruction can not have PITarget with reserved xml name @ line 2, column 7 -> [Help 2]
+[ERROR]
+[ERROR] To see the full stack trace, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+[ERROR] [Help 2] http://cwiki.apache.org/confluence/display/MAVEN/ModelParseException
+
+PS C:\java-mongodb> @'
+>> <?xml version="1.0" encoding="UTF-8"?>
+>> <project xmlns="http://maven.apache.org/POM/4.0.0"
+>>          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>>          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+>>     <modelVersion>4.0.0</modelVersion>
+>>     <groupId>com.college</groupId>
+>>     <artifactId>java-mongodb</artifactId>
+>>     <version>1.0-SNAPSHOT</version>
+>>     <properties>
+>>         <maven.compiler.source>17</maven.compiler.source>
+>>         <maven.compiler.target>17</maven.compiler.target>
+>>         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+>>     </properties>
+>>     <dependencies>
+>>         <dependency>
+>>             <groupId>org.mongodb</groupId>
+>>             <artifactId>mongodb-driver-sync</artifactId>
+>>             <version>5.5.1</version>
+>>         </dependency>
+>>     </dependencies>
+>> </project>
+>> '@ | Set-Content -Path .\pom.xml -Encoding utf8
+
+PS C:\java-mongodb> Get-Content .\pom.xml -TotalCount 3
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+PS C:\java-mongodb> <?xml version="1.0" encoding="UTF-8"?>
+< : The term '<' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ <?xml version="1.0" encoding="UTF-8"?>
++ ~
+    + CategoryInfo          : ObjectNotFound: (<:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\java-mongodb> mvn clean compile
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ java-mongodb ---
+[INFO] Deleting C:\java-mongodb\target
+[INFO]
+[INFO] --- resources:3.5.0:resources (default-resources) @ java-mongodb ---
+[INFO] skip non existing resourceDirectory C:\java-mongodb\src\main\resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ java-mongodb ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug target 17] to target\classes
+[WARNING] location of system modules is not set in conjunction with -source 17
+[WARNING] not setting the location of system modules may lead to class files that cannot run on JDK 17
+[WARNING] --release 17 is recommended instead of -source 17 -target 17 because it sets the location of system modules automatically
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 7.958 s
+[INFO] Finished at: 2026-10-13T14:15:04+05:30
+[INFO] ------------------------------------------------------------------------
+
+PS C:\java-mongodb> cd C:\java-mongodb
+PS C:\java-mongodb> mvn exec:java "-Dexec.mainClass=com.college.App"
+[INFO] Scanning for projects...
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] --- exec:3.6.4:java (default-cli) @ java-mongodb ---
+ERROR: Set a valid MONGODB_URI first.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 2.151 s
+[INFO] Finished at: 2026-10-13T14:16:13+05:30
+[INFO] ------------------------------------------------------------------------
+
+PS C:\java-mongodb> code pom.xml
+PS C:\java-mongodb> cd C:\java-mongodb
+PS C:\java-mongodb> mvn clean compile
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] --- clean:3.5.0:clean (default-clean) @ java-mongodb ---
+[INFO] Deleting C:\java-mongodb\target
+[INFO] --- resources:3.5.0:resources (default-resources) @ java-mongodb ---
+[INFO] skip non existing resourceDirectory C:\java-mongodb\src\main\resources
+[INFO] --- compiler:3.16.0:compile (default-compile) @ java-mongodb ---
+[INFO] Compiling 1 source file with javac [debug target 17] to target\classes
+[WARNING] location of system modules is not set in conjunction with -source 17
+[WARNING] --release 17 is recommended instead of -source 17 -target 17
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 5.703 s
+[INFO] Finished at: 2026-10-13T14:19:58+05:30
+[INFO] ------------------------------------------------------------------------
+
+PS C:\java-mongodb> mvn exec:java "-Dexec.mainClass=com.college.App"
+[INFO] Scanning for projects...
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] --- exec:3.6.4:java (default-cli) @ java-mongodb ---
+ERROR: Set a valid MONGODB_URI first.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 3.022 s
+[INFO] Finished at: 2026-10-13T14:20:15+05:30
+[INFO] ------------------------------------------------------------------------
+
+PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://2024pceacspriyanshi131_db_user:YOUR_URL_ENCODED_PASSWORD@cluster0.fgszsfn.mongodb.net/"
+PS C:\java-mongodb> cd C:\java-mongodb
+PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] --- clean:3.5.0:clean (default-clean) @ java-mongodb ---
+[INFO] Deleting C:\java-mongodb\target
+[INFO] --- resources:3.5.0:resources (default-resources) @ java-mongodb ---
+[INFO] skip non existing resourceDirectory C:\java-mongodb\src\main\resources
+[INFO] --- compiler:3.16.0:compile (default-compile) @ java-mongodb ---
+[INFO] Compiling 1 source file with javac [debug target 17] to target\classes
+[WARNING] location of system modules is not set in conjunction with -source 17
+[WARNING] --release 17 is recommended instead of -source 17 -target 17
+[INFO] --- exec:3.6.4:java (default-cli) @ java-mongodb ---
+WARNING: SLF4J not found on the classpath. Logging is disabled for the 'org.mongodb.driver' component
+MongoDB error: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='2024pceacspriyanshi131_db_user', source='admin', password=<hidden>, mechanismProperties=<hidden>}
+com.mongodb.MongoSecurityException: Exception authenticating MongoCredential
+Caused by: com.mongodb.MongoCommandException: Command failed with error 8000 (AtlasError): 'bad auth : authentication failed'
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 23.671 s
+[INFO] Finished at: 2026-10-13T14:23:00+05:30
+[INFO] ------------------------------------------------------------------------
+
+PS C:\java-mongodb>
+PS C:\Users\mathu> cd C:\java-mongodb
+PS C:\java-mongodb> code .
+PS C:\java-mongodb> code pom.xml
+PS C:\java-mongodb> mvn clean compile
+[INFO] Scanning for projects...
+[ERROR] [ERROR] Some problems were encountered while processing the POMs:
+[FATAL] Non-parseable POM C:\java-mongodb\pom.xml: processing instruction can not have PITarget with reserved xml name (position: START_DOCUMENT seen \r\n<?xml ... @2:7)  @ line 2, column 7
+ @
+[ERROR] The build could not read 1 project -> [Help 1]
+[ERROR]
+[ERROR]   The project  (C:\java-mongodb\pom.xml) has 1 error
+[ERROR]     Non-parseable POM C:\java-mongodb\pom.xml: processing instruction can not have PITarget with reserved xml name (position: START_DOCUMENT seen \r\n<?xml ... @2:7)  @ line 2, column 7 -> [Help 2]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/ProjectBuildingException
+[ERROR] [Help 2] http://cwiki.apache.org/confluence/display/MAVEN/ModelParseException
+PS C:\java-mongodb> @'
+>> <?xml version="1.0" encoding="UTF-8"?>
+>> <project xmlns="http://maven.apache.org/POM/4.0.0"
+>>          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+>>          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+>>     <modelVersion>4.0.0</modelVersion>
+>>     <groupId>com.college</groupId>
+>>     <artifactId>java-mongodb</artifactId>
+>>     <version>1.0-SNAPSHOT</version>
+>>     <properties>
+>>         <maven.compiler.source>17</maven.compiler.source>
+>>         <maven.compiler.target>17</maven.compiler.target>
+>>         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+>>     </properties>
+>>     <dependencies>
+>>         <dependency>
+>>             <groupId>org.mongodb</groupId>
+>>             <artifactId>mongodb-driver-sync</artifactId>
+>>             <version>5.5.1</version>
+>>         </dependency>
+>>     </dependencies>
+>> </project>
+>> '@ | Set-Content -Path .\pom.xml -Encoding utf8
+PS C:\java-mongodb> Get-Content .\pom.xml -TotalCount 3
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+PS C:\java-mongodb> <?xml version="1.0" encoding="UTF-8"?>
+< : The term '<' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ <?xml version="1.0" encoding="UTF-8"?>
++ ~
+    + CategoryInfo          : ObjectNotFound: (<:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\java-mongodb> mvn clean compile
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 24069 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ java-mongodb ---
+[INFO] Deleting C:\java-mongodb\target
+[INFO]
+[INFO] --- resources:3.5.0:resources (default-resources) @ java-mongodb ---
+[INFO] skip non existing resourceDirectory C:\java-mongodb\src\main\resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ java-mongodb ---
+[INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug target 17] to target\classes
+[WARNING] location of system modules is not set in conjunction with -source 17
+  not setting the location of system modules may lead to class files that cannot run on JDK 17
+    --release 17 is recommended instead of -source 17 -target 17 because it sets the location of system modules automatically
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  7.958 s
+[INFO] Finished at: 2026-10-13T14:15:04+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\java-mongodb> cd C:\java-mongodb
+PS C:\java-mongodb> mvn exec:java "-Dexec.mainClass=com.college.App"
+[INFO] Scanning for projects...
+[INFO] Loaded 24069 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- exec:3.6.4:java (default-cli) @ java-mongodb ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+ERROR: Set a valid MONGODB_URI first.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  2.151 s
+[INFO] Finished at: 2026-10-13T14:16:13+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\java-mongodb> code pom.xml
+PS C:\java-mongodb> cd C:\java-mongodb
+PS C:\java-mongodb> mvn clean compile
+[INFO] Scanning for projects...
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Loaded 24069 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ java-mongodb ---
+[INFO] Deleting C:\java-mongodb\target
+[INFO]
+[INFO] --- resources:3.5.0:resources (default-resources) @ java-mongodb ---
+[INFO] skip non existing resourceDirectory C:\java-mongodb\src\main\resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ java-mongodb ---
+[INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug target 17] to target\classes
+[WARNING] location of system modules is not set in conjunction with -source 17
+  not setting the location of system modules may lead to class files that cannot run on JDK 17
+    --release 17 is recommended instead of -source 17 -target 17 because it sets the location of system modules automatically
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  5.703 s
+[INFO] Finished at: 2026-10-13T14:19:58+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\java-mongodb> mvn exec:java "-Dexec.mainClass=com.college.App"
+[INFO] Scanning for projects...
+[INFO] Loaded 24069 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- exec:3.6.4:java (default-cli) @ java-mongodb ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+ERROR: Set a valid MONGODB_URI first.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.022 s
+[INFO] Finished at: 2026-10-13T14:20:15+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://2024pceacspriyanshi131_db_user:YOUR_URL_ENCODED_PASSWORD@cluster0.fgszsfn.mongodb.net/"
+PS C:\java-mongodb> cd C:\java-mongodb
+PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
+[INFO] Scanning for projects...
+[INFO] Loaded 24069 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO]
+[INFO] ----------------------< com.college:java-mongodb >----------------------
+[INFO] Building java-mongodb 1.0-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO]
+[INFO] --- clean:3.5.0:clean (default-clean) @ java-mongodb ---
+[INFO] Deleting C:\java-mongodb\target
+[INFO]
+[INFO] --- resources:3.5.0:resources (default-resources) @ java-mongodb ---
+[INFO] skip non existing resourceDirectory C:\java-mongodb\src\main\resources
+[INFO]
+[INFO] --- compiler:3.16.0:compile (default-compile) @ java-mongodb ---
+[INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 1 source file with javac [debug target 17] to target\classes
+[WARNING] location of system modules is not set in conjunction with -source 17
+  not setting the location of system modules may lead to class files that cannot run on JDK 17
+    --release 17 is recommended instead of -source 17 -target 17 because it sets the location of system modules automatically
+[INFO]
+[INFO] --- exec:3.6.4:java (default-cli) @ java-mongodb ---
+[INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
+Oct 13, 2026 2:22:43 PM com.mongodb.internal.diagnostics.logging.Loggers shouldUseSLF4J
+WARNING: SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
+MongoDB error: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='2024pceacspriyanshi131_db_user', source='admin', password=<hidden>, mechanismProperties=<hidden>}
+com.mongodb.MongoSecurityException: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='2024pceacspriyanshi131_db_user', source='admin', password=<hidden>, mechanismProperties=<hidden>}
+        at com.mongodb.internal.connection.SaslAuthenticator.wrapException(SaslAuthenticator.java:300)
+        at com.mongodb.internal.connection.SaslAuthenticator.lambda$authenticate$0(SaslAuthenticator.java:95)
+        at com.mongodb.internal.connection.SaslAuthenticator.doAsSubject(SaslAuthenticator.java:307)
+        at com.mongodb.internal.connection.SaslAuthenticator.authenticate(SaslAuthenticator.java:67)
+        at com.mongodb.internal.connection.DefaultAuthenticator.authenticate(DefaultAuthenticator.java:53)
+        at com.mongodb.internal.connection.InternalStreamConnectionInitializer.finishHandshake(InternalStreamConnectionInitializer.java:89)
+        at com.mongodb.internal.connection.InternalStreamConnection.open(InternalStreamConnection.java:238)
+        at com.mongodb.internal.connection.UsageTrackingInternalConnection.open(UsageTrackingInternalConnection.java:53)
+        at com.mongodb.internal.connection.DefaultConnectionPool$PooledConnection.open(DefaultConnectionPool.java:631)
+        at com.mongodb.internal.connection.DefaultConnectionPool$OpenConcurrencyLimiter.openWithConcurrencyLimit(DefaultConnectionPool.java:978)
+        at com.mongodb.internal.connection.DefaultConnectionPool$OpenConcurrencyLimiter.openOrGetAvailable(DefaultConnectionPool.java:908)
+        at com.mongodb.internal.connection.DefaultConnectionPool.get(DefaultConnectionPool.java:198)
+        at com.mongodb.internal.connection.DefaultServer.getConnection(DefaultServer.java:94)
+        at com.mongodb.internal.binding.ClusterBinding$ClusterBindingConnectionSource.getConnection(ClusterBinding.java:138)
+        at com.mongodb.client.internal.ClientSessionBinding$SessionBindingConnectionSource.getConnection(ClientSessionBinding.java:161)
+        at com.mongodb.internal.operation.SyncOperationHelper.withSuppliedResource(SyncOperationHelper.java:148)
+        at com.mongodb.internal.operation.SyncOperationHelper.lambda$withSourceAndConnection$1(SyncOperationHelper.java:130)
+        at com.mongodb.internal.operation.SyncOperationHelper.withSuppliedResource(SyncOperationHelper.java:156)
+        at com.mongodb.internal.operation.SyncOperationHelper.withSourceAndConnection(SyncOperationHelper.java:129)
+        at com.mongodb.internal.operation.SyncOperationHelper.lambda$executeRetryableRead$4(SyncOperationHelper.java:195)
+        at com.mongodb.internal.operation.SyncOperationHelper.lambda$decorateReadWithRetries$13(SyncOperationHelper.java:317)
+        at com.mongodb.internal.async.function.RetryingSyncSupplier.get(RetryingSyncSupplier.java:67)
+        at com.mongodb.internal.operation.SyncOperationHelper.executeRetryableRead(SyncOperationHelper.java:201)
+        at com.mongodb.internal.operation.SyncOperationHelper.executeRetryableRead(SyncOperationHelper.java:180)
+        at com.mongodb.internal.operation.CommandReadOperation.execute(CommandReadOperation.java:52)
+        at com.mongodb.client.internal.MongoClusterImpl$OperationExecutorImpl.execute(MongoClusterImpl.java:424)
+        at com.mongodb.client.internal.MongoDatabaseImpl.executeCommand(MongoDatabaseImpl.java:215)
+        at com.mongodb.client.internal.MongoDatabaseImpl.runCommand(MongoDatabaseImpl.java:184)
+        at com.mongodb.client.internal.MongoDatabaseImpl.runCommand(MongoDatabaseImpl.java:179)
+        at com.mongodb.client.internal.MongoDatabaseImpl.runCommand(MongoDatabaseImpl.java:169)
+        at com.college.App.main(App.java:35)
+        at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+        at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+        at org.codehaus.mojo.exec.AbstractExecJavaBase.executeMainMethod(AbstractExecJavaBase.java:402)
+        at org.codehaus.mojo.exec.ExecJavaMojo.executeMainMethod(ExecJavaMojo.java:142)
+        at org.codehaus.mojo.exec.AbstractExecJavaBase.doExecClassLoader(AbstractExecJavaBase.java:377)
+        at org.codehaus.mojo.exec.AbstractExecJavaBase.lambda$execute$0(AbstractExecJavaBase.java:287)
+        at java.base/java.lang.Thread.run(Thread.java:1516)
+Caused by: com.mongodb.MongoCommandException: Command failed with error 8000 (AtlasError): 'bad auth : authentication failed' on server ac-i1fw1k5-shard-00-02.fgszsfn.mongodb.net:27017. The full response is {"ok": 0, "errmsg": "bad auth : authentication failed", "code": 8000, "codeName": "AtlasError"}
+        at com.mongodb.internal.connection.ProtocolHelper.getCommandFailureException(ProtocolHelper.java:210)
+        at com.mongodb.internal.connection.InternalStreamConnection.receiveCommandMessageResponse(InternalStreamConnection.java:520)
+        at com.mongodb.internal.connection.InternalStreamConnection.sendAndReceiveInternal(InternalStreamConnection.java:448)
+        at com.mongodb.internal.connection.InternalStreamConnection.lambda$sendAndReceive$0(InternalStreamConnection.java:375)
+        at com.mongodb.internal.connection.InternalStreamConnection.sendAndReceive(InternalStreamConnection.java:378)
+        at com.mongodb.internal.connection.CommandHelper.sendAndReceive(CommandHelper.java:100)
+        at com.mongodb.internal.connection.CommandHelper.executeCommand(CommandHelper.java:49)
+        at com.mongodb.internal.connection.SaslAuthenticator.sendSaslContinue(SaslAuthenticator.java:246)
+        at com.mongodb.internal.connection.SaslAuthenticator.lambda$authenticate$0(SaslAuthenticator.java:83)
+        ... 36 more
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] was interrupted but is still alive after waiting at least 15000msecs
+[WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] will linger despite being asked to die via interruption
+[WARNING] NOTE: 1 thread(s) did not finish despite being asked to via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  23.671 s
+[INFO] Finished at: 2026-10-13T14:23:00+05:30
+[INFO] ------------------------------------------------------------------------
+PS C:\java-mongodb>
