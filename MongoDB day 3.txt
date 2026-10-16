@@ -1,6 +1,6 @@
 PS C:\java-mongodb> cd C:\java-mongodb
 PS C:\java-mongodb> code src\main\java\com\college\App.java
-PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://2024pceacspriyanshi131_db_user:QGbFL9PsQRDZtuIU@cluster0.fgszsfn.mongodb.net/"
+PS C:\java-mongodb:.@cluster0.fgszsfn.mongodb.net/"
 PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
 [INFO] Scanning for projects...
 [INFO] Loaded 24090 auto-discovered prefixes for remote repository central (prefixes-central.txt)
@@ -64,7 +64,7 @@ Exiting program...
 [INFO] Total time:  01:13 min
 [INFO] Finished at: 2026-10-15T08:46:21+05:30
 [INFO] ------------------------------------------------------------------------
-PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://2024pceacspriyanshi131_db_user:QGbFL9PsQRDZtuIU@cluster0.fgszsfn.mongodb.net/"
+PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://.:.@cluster0.fgszsfn.mongodb.net/"
 PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
 [INFO] Scanning for projects...
 [INFO] Loaded 24090 auto-discovered prefixes for remote repository central (prefixes-central.txt)
@@ -104,7 +104,7 @@ Collection selected: students
 [INFO] Total time:  22.420 s
 [INFO] Finished at: 2026-10-15T08:51:05+05:30
 [INFO] ------------------------------------------------------------------------
-PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://2024pceacspriyanshi131_db_user:QGbFL9PsQRDZtuIU@cluster0.fgszsfn.mongodb.net/"
+PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://.:.@cluster0.fgszsfn.mongodb.net/"
 PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
 [INFO] Scanning for projects...
 [INFO] Loaded 24090 auto-discovered prefixes for remote repository central (prefixes-central.txt)
@@ -208,7 +208,7 @@ Exiting program...
 [INFO] ------------------------------------------------------------------------
 PS C:\java-mongodb>
 ---
-PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://2024pceacspriyanshi131_db_user:YOUR_URL_ENCODED_PASSWORD@cluster0.fgszsfn.mongodb.net/"
+PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://.:YOUR_URL_ENCODED_PASSWORD@cluster0.fgszsfn.mongodb.net/"
 PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
 [INFO] Scanning for projects...
 [INFO] Loaded 24090 auto-discovered prefixes for remote repository central (prefixes-central.txt)
@@ -236,7 +236,7 @@ PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.Ap
 [INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
 Oct 15, 2026 8:42:36 AM com.mongodb.internal.diagnostics.logging.Loggers shouldUseSLF4J
 WARNING: SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
-Error: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='2024pceacspriyanshi131_db_user', source='admin', password=<hidden>, mechanismProperties=<hidden>}
+Error: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='.', source='admin', password=<hidden>, mechanismProperties=<hidden>}
 [WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] was interrupted but is still alive after waiting at least 15000msecs
 [WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] will linger despite being asked to die via interruption
 [WARNING] NOTE: 1 thread(s) did not finish despite being asked to via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
@@ -273,7 +273,7 @@ PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.Ap
 [INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
 Oct 15, 2026 8:43:16 AM com.mongodb.internal.diagnostics.logging.Loggers shouldUseSLF4J
 WARNING: SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
-Error: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='2024pceacspriyanshi131_db_user', source='admin', password=<hidden>, mechanismProperties=<hidden>}
+Error: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='.', source='admin', password=<hidden>, mechanismProperties=<hidden>}
 [WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] was interrupted but is still alive after waiting at least 15000msecs
 [WARNING] thread Thread[#45,BufferPoolPruner-1-thread-1,5,com.college.App] will linger despite being asked to die via interruption
 [WARNING] NOTE: 1 thread(s) did not finish despite being asked to via interruption. This is not a problem with exec:java, it is a problem with the running code. Although not serious, it should be remedied.
@@ -283,7 +283,7 @@ Error: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName=
 [INFO] Total time:  26.421 s
 [INFO] Finished at: 2026-10-15T08:43:34+05:30
 [INFO] ------------------------------------------------------------------------
-PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://2024pceacspriyanshi131_db_user:QGbFL9PsQRDZtuIU@cluster0.fgszsfn.mongodb.net/"
+PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://.:.@cluster0.fgszsfn.mongodb.net/"
 PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
 [INFO] Scanning for projects...
 [INFO] Loaded 24090 auto-discovered prefixes for remote repository central (prefixes-central.txt)
@@ -347,7 +347,7 @@ Exiting program...
 [INFO] Total time:  01:13 min
 [INFO] Finished at: 2026-10-15T08:46:21+05:30
 [INFO] ------------------------------------------------------------------------
-PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://2024pceacspriyanshi131_db_user:QGbFL9PsQRDZtuIU@cluster0.fgszsfn.mongodb.net/"
+PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://.:.@cluster0.fgszsfn.mongodb.net/"
 PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
 [INFO] Scanning for projects...
 [INFO] Loaded 24090 auto-discovered prefixes for remote repository central (prefixes-central.txt)
@@ -387,7 +387,7 @@ Collection selected: students
 [INFO] Total time:  22.420 s
 [INFO] Finished at: 2026-10-15T08:51:05+05:30
 [INFO] ------------------------------------------------------------------------
-PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://2024pceacspriyanshi131_db_user:QGbFL9PsQRDZtuIU@cluster0.fgszsfn.mongodb.net/"
+PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://.:.@cluster0.fgszsfn.mongodb.net/"
 PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
 [INFO] Scanning for projects...
 [INFO] Loaded 24090 auto-discovered prefixes for remote repository central (prefixes-central.txt)
