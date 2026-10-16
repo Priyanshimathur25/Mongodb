@@ -139,7 +139,7 @@ ERROR: Set a valid MONGODB_URI first.
 [INFO] Finished at: 2026-10-13T14:20:15+05:30
 [INFO] ------------------------------------------------------------------------
 
-PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://2024pceacspriyanshi131_db_user:YOUR_URL_ENCODED_PASSWORD@cluster0.fgszsfn.mongodb.net/"
+PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://.:YOUR_URL_ENCODED_PASSWORD@cluster0.fgszsfn.mongodb.net/"
 PS C:\java-mongodb> cd C:\java-mongodb
 PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
 [INFO] Scanning for projects...
@@ -158,7 +158,7 @@ PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.Ap
 [WARNING] --release 17 is recommended instead of -source 17 -target 17
 [INFO] --- exec:3.6.4:java (default-cli) @ java-mongodb ---
 WARNING: SLF4J not found on the classpath. Logging is disabled for the 'org.mongodb.driver' component
-MongoDB error: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='2024pceacspriyanshi131_db_user', source='admin', password=<hidden>, mechanismProperties=<hidden>}
+MongoDB error: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='.', source='admin', password=<hidden>, mechanismProperties=<hidden>}
 com.mongodb.MongoSecurityException: Exception authenticating MongoCredential
 Caused by: com.mongodb.MongoCommandException: Command failed with error 8000 (AtlasError): 'bad auth : authentication failed'
 [INFO] ------------------------------------------------------------------------
@@ -319,7 +319,7 @@ ERROR: Set a valid MONGODB_URI first.
 [INFO] Total time:  3.022 s
 [INFO] Finished at: 2026-10-13T14:20:15+05:30
 [INFO] ------------------------------------------------------------------------
-PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://2024pceacspriyanshi131_db_user:YOUR_URL_ENCODED_PASSWORD@cluster0.fgszsfn.mongodb.net/"
+PS C:\java-mongodb> $env:MONGODB_URI = "mongodb+srv://.:YOUR_URL_ENCODED_PASSWORD@cluster0.fgszsfn.mongodb.net/"
 PS C:\java-mongodb> cd C:\java-mongodb
 PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.App"
 [INFO] Scanning for projects...
@@ -348,8 +348,8 @@ PS C:\java-mongodb> mvn clean compile exec:java "-Dexec.mainClass=com.college.Ap
 [INFO] Loaded 50 auto-discovered prefixes for remote repository ow2-snapshot (prefixes-ow2-snapshot.txt)
 Oct 13, 2026 2:22:43 PM com.mongodb.internal.diagnostics.logging.Loggers shouldUseSLF4J
 WARNING: SLF4J not found on the classpath.  Logging is disabled for the 'org.mongodb.driver' component
-MongoDB error: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='2024pceacspriyanshi131_db_user', source='admin', password=<hidden>, mechanismProperties=<hidden>}
-com.mongodb.MongoSecurityException: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='2024pceacspriyanshi131_db_user', source='admin', password=<hidden>, mechanismProperties=<hidden>}
+MongoDB error: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='.', source='admin', password=<hidden>, mechanismProperties=<hidden>}
+com.mongodb.MongoSecurityException: Exception authenticating MongoCredential{mechanism=SCRAM-SHA-1, userName='.', source='admin', password=<hidden>, mechanismProperties=<hidden>}
         at com.mongodb.internal.connection.SaslAuthenticator.wrapException(SaslAuthenticator.java:300)
         at com.mongodb.internal.connection.SaslAuthenticator.lambda$authenticate$0(SaslAuthenticator.java:95)
         at com.mongodb.internal.connection.SaslAuthenticator.doAsSubject(SaslAuthenticator.java:307)
